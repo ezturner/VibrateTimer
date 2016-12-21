@@ -3,7 +3,9 @@ package io.ezturner.vibratetimer.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.ezturner.vibratetimer.R;
@@ -12,6 +14,9 @@ import io.ezturner.vibratetimer.services.TimerService;
 public class TimerActivity extends AppCompatActivity {
 
     private TimerService timerService;
+
+    @BindView(R.id.time_input)
+    EditText timerInput;
 
 
     @Override
@@ -49,7 +54,7 @@ public class TimerActivity extends AppCompatActivity {
         return service;
     }
 
-    //@OnClick(R.id.start_timer)
+    @OnClick(R.id.start_timer)
     public void startTimerClick(){
         timerService = getService();
         timerService.startTimer(getTimerLength());
@@ -60,6 +65,6 @@ public class TimerActivity extends AppCompatActivity {
      * @return timerLength
      */
     private int getTimerLength(){
-        return 15;
+        return Integer.parseInt(timerInput.getText().toString());
     }
 }
