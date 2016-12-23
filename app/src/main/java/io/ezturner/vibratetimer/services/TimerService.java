@@ -129,7 +129,9 @@ public class TimerService extends Service {
     };
 
 
-
+    /**
+     * Vibrates the device to signal the end of the timer.
+     */
     private void vibrate(){
         Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         vibrator.vibrate(500);
