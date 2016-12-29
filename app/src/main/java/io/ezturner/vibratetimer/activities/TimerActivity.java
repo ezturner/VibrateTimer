@@ -8,8 +8,10 @@ import android.widget.EditText;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.crashlytics.android.Crashlytics;
 import io.ezturner.vibratetimer.R;
 import io.ezturner.vibratetimer.services.TimerService;
+import io.fabric.sdk.android.Fabric;
 
 public class TimerActivity extends AppCompatActivity {
 
@@ -22,6 +24,7 @@ public class TimerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_timer);
 
         ButterKnife.bind(this);
